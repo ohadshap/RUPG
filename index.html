@@ -15,20 +15,89 @@
     <div class="container">	
         <div class="user-container"></div>	
         <div class="quote-container"></div>	
+        
         <div class="content-container">	
             <div class="pokemon-container"></div>	
             <div class="meat-container"></div>	
-        </div>	
+        </div>
+
+        <div id="dropDown-container">
+            <button class="savedUsers">Saved Users</button>
+            <div id="dropDown" class="dropDown-div">
+            </div>
+        </div>
+
         <div class="friends">	
             <h4>Friends</h4>	
             <div class="friends-container">	
             </div>	
         </div>	
+
         <div class="buttons">	
-            <button>Load User Data</button>	
-            <button>Display User</button>	
+            <button id="load">Load User Data</button>	
+            <button id="display">Display User</button>
+            <button id="saveUserPage">Save User Page</button>
+            <button id="loadUserPage">Load User Page</button>	
         </div>	
     </div>
+
+    <script id="mainUser-template" type="text/x-handlebars-template">
+        <div>
+            <img src="{{profilePic}}" alt="user's profile picture" id="profile-pic">
+            <div class="user-info">
+                <p>{{properCase firstName}} {{properCase lastName}}</p>
+                <p>{{properCase city}}, {{properCase state}}</p>
+            </div>
+        </div>
+    </script>
+
+    <script id="quote-template" type="text/x-handlebars-template">
+        <div>
+            <p>Favorite quote:</p>
+            <span>{{kanyeQuote}}</span>
+            <p>- K . West</p>
+        </div>
+    </script>
+
+    <script id="pokemon-template" type="text/x-handlebars-template">
+        
+            <img src="{{pokePic}}" alt="picture of {{pokaName}}" id="pokemon-image">
+            <span id="pokemon-text">Favorite Pokemon : {{properCase pokaName}}</span>
+        
+    </script>
+
+    <script id="about-template" type="text/x-handlebars-template">
+        <div>
+            <p>About Me:</p>
+            <p class="meat-text">{{meatText}}</p>
+        </div>
+    </script>
+
+    <script id="friends-template" type="text/x-handlebars-template">
+        <ul>
+            {{#each friends}} 
+            <li>{{properCase friendFirstName}} {{properCase friendLastName}}</li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>    
+    <script>    
+        Handlebars.registerHelper('properCase', (aString) => {
+           return aString.charAt(0).toUpperCase() + aString.slice(1)
+    })</script>
+
+    <script src="APIManager.js"></script>
+
+    <script src="Renderer.js"></script>
+
+    <script src="main.js"></script>
 </body>
 
 </html>
